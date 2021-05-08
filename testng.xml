@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="接口自动化报告" allow-return-values="true">
+
+    <test name="一键造车">
+        <classes>
+            <!--  如果放在包里面一定要带包名，不然找不到这个用例-->
+            <class name="com.carams.testcase.buildcar.Testlogin"/>
+            <class name="com.carams.testcase.buildcar.TestcreateVehicle"/>
+            <class name="com.carams.testcase.buildcar.TestgetVehicleReadyRunList"/>
+            <class name="com.carams.testcase.buildcar.Testlogin_ios"/>
+            <class name="com.carams.testcase.buildcar.TestnewcarSearch"/>
+        </classes>
+    </test>
+
+    <test name="创建车辆接口用例">
+        <classes>
+            <!--  如果放在包里面一定要带包名，不然找不到这个用例-->
+            <class name="com.carams.testcase.TestcreateVehicle_detail"/>
+
+        </classes>
+
+    </test>
+
+    <test name="查询车辆接口用例">
+    <classes>
+        <!--  如果放在包里面一定要带包名，不然找不到这个用例-->
+        <class name="com.carams.testcase.TestgetVehicleReadyRunList_detail"/>
+
+    </classes>
+    </test>
+
+
+
+
+
+    <listeners>
+
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+
+    </listeners>
+</suite>

@@ -1,0 +1,51 @@
+<project name="TestNGTest" default="run" basedir=".">
+    <!--<taskdef name = "testng" classname = "org.testng.TestNGAntTask"/>-->
+    <property name="base.dir" value="."/>
+    <property name = "bindir" location = "${base.dir}/bin"/>
+    <property name="srcdir" location="${base.dir}/src/test" />
+    <property name="libdir" location="${base.dir}/lib" />
+    <property name="full-compile" value="true" />
+    <property name="testng.file" value="testng.xml"/>
+    <property name="testng.outputdir" value="${base.dir}/test-output"/>
+    <taskdef resource="testngtasks" classpath="${libdir}/testng-6.8.5.jar"/>
+
+    <path id="classpath.base"/>
+    <path id="classpath.test">
+        <fileset dir="${libdir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <pathelement location="${bindir}" />
+        <pathelement location="${srcdir}" />
+        <path refid="classpath.base" />
+
+    </path>
+
+    <target name="clean" >
+        <delete verbose="${full-compile}">
+            <fileset dir="${bindir}" includes="**/*.class" />
+        </delete>
+    </target>
+
+    <target name="compile" depends="clean">
+        <javac srcdir="${srcdir}" destdir="${bindir}" includeantruntime="on"  verbose="${full-compile}" encoding="utf-8">
+            <classpath refid="classpath.test"/>
+
+        </javac>
+    </target>
+<!--  useDefaultListeners="true" 表示保留默认的testng报告,false则不输出默认的testng报告-->
+    <!--   listeners="org.uncommons.reportng.HTMLReporter  使用reporterng报告,org.uncommons.reportng.JUnitXMLReporter 产生junitxml报告，Jenkins配置的时候可能会用上-->
+    <!-- target name="run" 与顶部的default="run" 对应-->
+    <target name="run" depends="compile" description="执行TestNg测试用例">
+        <testng outputdir="${testng.outputdir}" classpathref="classpath.test"
+
+            useDefaultListeners="false"
+            listeners="org.uncommons.reportng.HTMLReporter,org.testng.reporters.FailedReporter,org.uncommons.reportng.JUnitXMLReporter" >
+
+            <xmlfileset dir="${base.dir}" includes="${testng.file}"/>
+            <!--设置报告Title名称 -->
+            <sysproperty key="org.uncommons.reportng.title" value="自动化测试报告" />
+            <jvmarg value="-Dfile.encoding=UTF-8"/>
+        </testng>
+    </target>
+
+</project>

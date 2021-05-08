@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="一键造车"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="1.334">
+  <properties />
+  
+  
+            <testcase name="testLogin_createVehicle" time="1.334" classname="com.carams.testcase.buildcar.TestcreateVehicle" />
+      
+</testsuite>

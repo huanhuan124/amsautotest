@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="查询车辆接口用例"
+           tests="2"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="1.106">
+  <properties />
+  
+  
+            <testcase name="testLogin_getVehicleReadyRunList" time="0.784" classname="com.carams.testcase.TestgetVehicleReadyRunList_detail" />
+                <testcase name="testLogin_getVehicleReadyRunList" time="0.322" classname="com.carams.testcase.TestgetVehicleReadyRunList_detail" />
+      
+</testsuite>
